@@ -1,0 +1,50 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block content %}
+
+
+
+
+<section class="period">
+    <div class="row justify-content-center pt-5">
+        <div class="col-md-6 col-lg-6 text-center mt-5">
+          <h2>Calculate Your Coming Period Date </h2>
+          <p>Your cycle is the range at which your ovulation occurs.On average it is usually 28days but it might vary depending on you.<br>
+          Your start date of last ovulation is the first day your last period commenced e.g your ovulation lasted for a week the previous month, thus the first day is the start of that one week
+          </p>
+    </div>
+
+    <div class="col-md-6 col-lg-6 mt-5">
+        <form action="{% url 'home' %}" method="POST">
+            {% csrf_token %}
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-8 mt 2">
+                    <div class="form-group">
+                        <div class="label">First Day Of Last</div>
+                        <input type="text" name="last" placeholder="Select Date" class="form-control date shadow-none">
+                    </div>
+                </div>
+                <div class="col-md-8 col-lg-8 mt 2">
+                    <div class="form-group">
+                        <div class="label">Ovulation Cycle</div>
+                        <input type="text" name="ovulation" class="form-control shadow-none">
+                    </div>
+                </div>
+
+                <div class="col-md-8 col-lg-8 mt 2">
+                    <button class="btn btn-outline-white mt-3 shadow-none" type="submit">Submit</button>
+                </div>
+
+            </div>
+            {% if m %}
+                {{m}}
+            {% endif %}
+        </form>
+    </div>
+</div>
+    
+</section>
+
+
+
+{% endblock %}
